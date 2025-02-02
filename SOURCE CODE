@@ -1,0 +1,59 @@
+import pygame
+import time
+from pygame.locals import *
+import tkinter as tk
+
+# Initialize pygame
+pygame.init()
+
+# Set up the screen
+screen_width = 800
+screen_height = 600
+screen = pygame.display.set_mode((screen_width, screen_height), pygame.NOFRAME | pygame.SRCALPHA)
+
+# Font for displaying FPS
+font = pygame.font.SysFont("Arial", 30)
+
+# FPS calculation variables
+clock = pygame.time.Clock()
+start_time = time.time()
+frame_count = 0
+
+# Create a transparent Tkinter window for overlay
+root = tk.Tk()
+root.geometry(f'{screen_width}x{screen_height}+0+0')
+root.attributes("-topmost", True)
+root.attributes("-transparentcolor", "white")
+
+# Function to draw FPS on the screen
+def display_fps():
+    global frame_count, start_time
+    frame_count += 1
+    elapsed_time = time.time() - start_time
+    if elapsed_time >= 1:
+        fps = frame_count / elapsed_time
+        start_time = time.time()
+        frame_count = 0
+        return round(fps, 2)
+    return 0
+
+# Main loop
+while True:
+    screen.fill((0, 0, 0))  # Clear the screen with black
+    fps = display_fps()
+    
+    # Create the FPS text surface
+    fps_text = font.render(f"FPS: {fps}", True, (255, 255, 255))
+    
+    # Draw the FPS text on the screen
+    screen.blit(fps_text, (10, 10))
+    
+    pygame.display.update()  # Update the display
+    clock.tick(60)  # Limit to 60 FPS to prevent high CPU usage
+
+    # Handle exit events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            root.quit()
+            exit()
