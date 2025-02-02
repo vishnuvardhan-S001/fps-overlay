@@ -1,0 +1,54 @@
+FPS Overlay
+A simple Python-based FPS overlay for your screen. This overlay displays the current Frames Per Second (FPS) on your screen, allowing you to monitor the performance of your system or games in real-time.
+
+Features
+Real-time FPS calculation and display.
+Transparent overlay that appears on top of your applications.
+Simple and lightweight.
+Technologies Used
+Python: The main programming language used to write the script.
+Pygame: Used for rendering and FPS calculation.
+Tkinter: Used for creating the transparent overlay.
+Requirements
+Make sure you have Python installed on your system. You also need the following libraries:
+
+pygame
+tkinter (typically comes pre-installed with Python)
+To install the required libraries, use pip:
+
+bash
+Copy
+Edit
+pip install pygame
+How to Run
+Clone or download this repository.
+
+Ensure Python is installed on your system.
+
+Install the required libraries by running the following command in your terminal/command prompt:
+
+bash
+Copy
+Edit
+pip install pygame
+Run the script by executing the following command in the terminal:
+
+bash
+Copy
+Edit
+python fps_overlay.py
+The FPS overlay will appear on your screen, showing the FPS in the top-left corner.
+
+To close the overlay, simply close the window or press Ctrl + C in the terminal.
+
+Customization
+You can customize the position, font, or color of the FPS display by modifying the script. Look for the following parts of the code:
+
+Font: Adjust the font style and size.
+Position: Modify the (10, 10) coordinates in screen.blit(fps_text, (10, 10)) to change the overlay's location.
+Color: Change the (255, 255, 255) RGB color in font.render(f"FPS: {fps}", True, (255, 255, 255)) to pick a different text color.
+License
+This project is open-source and available under the MIT License.
+
+Contributing
+Feel free to fork the repository, make improvements, or create issues for bugs or new features. Contributions are always welcome!
